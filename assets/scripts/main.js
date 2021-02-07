@@ -29,7 +29,7 @@ const airHornRadioElem = document.getElementById("radio-air-horn");
 const carHornRadioElem = document.getElementById("radio-car-horn");
 const partyHornRadioElem = document.getElementById("radio-party-horn");
 
-//No global variables declared
+var audioVol = volumeDisplayElem.value / 100; //initial value
 
 /* Event listener for number volume change */
 volumeDisplayElem.oninput = function () {
@@ -62,7 +62,7 @@ function volumeChangeConsolidated(vol) {
         honkBtn.disabled = false;
     }
     //update volume over elements
-    audioElem.volume = vol / 100;
+    audioVol = vol / 100;
     volumeDisplayElem.value = vol;
     volumeSliderElem.value = vol;
 }
@@ -71,24 +71,26 @@ function volumeChangeConsolidated(vol) {
 airHornRadioElem.onclick = function () {
     audioElem.src = airHornMp3;
     hornImgElem.setAttribute("src", airHornImg);
-    audioElem.load();
 }
 
 carHornRadioElem.onclick = function () {
     audioElem.src = carHornMp3;
     hornImgElem.setAttribute("src", carHornImg);
-    audioElem.load();
 }
 
 partyHornRadioElem.onclick = function () {
     audioElem.src = partyHornMp3;
     hornImgElem.setAttribute("src", partyHornImg);
-    audioElem.load();
 }
 
 
 /* Event listener for btn press*/
 honkBtn.onclick = function () {
     event.preventDefault();
+    //Prevent change to the audio element while playing.
+    if (audioElem.paused) {
+        audioElem.load();
+        audioElem.volume = audioVol;
+    }
     audioElem.play();
 }
