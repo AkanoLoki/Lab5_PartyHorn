@@ -1,4 +1,4 @@
-name: Funny comments
+name: funny comment
 on:
   issues: 
     types: [opened]
