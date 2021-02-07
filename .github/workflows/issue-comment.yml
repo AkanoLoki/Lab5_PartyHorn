@@ -1,12 +1,11 @@
 name: Funny comments
 on:
-  pull_request:
   issues: 
     types: [opened]
 
 jobs:
   comment:
-    if: github.event_name == 'pull_request' || github.event_name == 'issues'
+    if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: add funny comment
