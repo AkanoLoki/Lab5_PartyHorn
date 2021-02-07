@@ -1,2 +1,3 @@
 # Lab5_PartyHorn
-[LINK TO PAGE](./index.html)
+[LINK TO PAGE](https://akanoloki.github.io/Lab5_PartyHorn/)
+[LINK TO source](./index.html)
